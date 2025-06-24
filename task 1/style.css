@@ -1,0 +1,93 @@
+/* Custom CSS for font and smooth transitions */
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding-top: 80px; /* Adjust based on nav height to prevent content overlap */
+    min-height: 200vh; /* For scrolling demonstration */
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+.nav-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-scrolled {
+    background-color: #3b82f6; /* Blue background on scroll */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ffffff; /* White text on scroll */
+}
+
+.nav-scrolled .nav-item-link {
+    color: #ffffff; /* Ensure links stay white on scroll */
+}
+
+.nav-scrolled .nav-item-link:hover {
+    color: #dbeafe; /* Lighter white on hover when scrolled */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Styles for the hamburger icon */
+.hamburger-menu {
+    display: none; /* Hidden by default on larger screens */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger-menu span {
+    height: 3px;
+    width: 25px;
+    background-color: #333; /* Default bar color */
+    margin-bottom: 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-scrolled .hamburger-menu span {
+    background-color: #ffffff; /* White bars when scrolled */
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex; /* Show hamburger on small screens */
+    }
+
+    .nav-menu {
+        display: none; /* Hide menu items by default on small screens */
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff; /* Default background for collapsed menu */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 16px 0;
+    }
+
+    .nav-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .nav-scrolled .nav-menu {
+        background-color: #3b82f6; /* Blue background for collapsed menu when scrolled */
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-item-link {
+        display: block;
+        padding: 12px 0;
+        border-radius: 0; /* No rounded corners for full width items */
+    }
+}
